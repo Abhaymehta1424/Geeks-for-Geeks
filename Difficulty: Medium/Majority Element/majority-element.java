@@ -1,20 +1,18 @@
 class Solution {
     int majorityElement(int arr[]) {
-        int candidate = -1;
-        int count = 0;
-
-        for (int num : arr) {
-            if (count == 0) {
-                candidate = num;
+        // code here
+        Arrays.sort(arr);
+        int count =0;
+        
+        for(int num : arr){
+            if(num == arr[arr.length/2]){
+                count++;
             }
-            count += (num == candidate) ? 1 : -1;
         }
-
-        count = 0;
-        for (int num : arr) {
-            if (num == candidate) count++;
+        if(count > arr.length/2){
+            return arr[arr.length/2];
+        }else{
+            return -1;
         }
-
-        return count > arr.length / 2 ? candidate : -1;
     }
 }
